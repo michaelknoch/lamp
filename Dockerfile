@@ -1,11 +1,14 @@
 FROM centos:7
 
-RUN yum -y install http://rpms.remirepo.net/enterprise/remi-release-7.rpm && \
+COPY etc/yum.repos.d/MariaDB.repo /etc/yum.repos.d/MariaDB.repo
+RUN yum  -y update && \
+    yum makecache fast && \
+    yum -y install http://rpms.remirepo.net/enterprise/remi-release-7.rpm && \
     yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm && \
     yum -y install yum-utils && \
     yum-config-manager --enable remi-php73
 
-RUN yum -y install vim which wget && \
+RUN yum -y install netstat vim which wget && \
     yum -y install httpd php mariadb-server phpmyadmin && \
     yum clean all
 

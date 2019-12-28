@@ -1,7 +1,7 @@
 #!/bin/bash
 
-httpd & mysqld_safe --skip-grant-tables --skip-networking &
-sleep 2
+httpd
+/etc/init.d/mysql start
 
 if [ -n "$RESTORE_SQL_DUMP" ]; then
     echo "create database drupal" | mysql -u root
@@ -9,4 +9,3 @@ if [ -n "$RESTORE_SQL_DUMP" ]; then
 fi
 
 /bin/bash
-cd /var/www
