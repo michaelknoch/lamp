@@ -13,7 +13,7 @@ RUN yum -y install http://rpms.remirepo.net/enterprise/remi-release-7.rpm && \
 RUN mkdir -p /var/www/html && \
     echo "<?php phpinfo(); ?>" > /var/www/html/phpinfo.php
 
-RUN wget https://github.com/drush-ops/drush/releases/download/8.3.1/drush.phar && \
+RUN wget https://github.com/drush-ops/drush/releases/download/8.4.8/drush.phar && \
     chmod +x drush.phar && mv drush.phar /usr/local/bin/drush
 
 RUN echo "error_log = /var/log/php-scripts.log" >> /etc/php.ini
