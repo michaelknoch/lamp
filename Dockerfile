@@ -16,6 +16,7 @@ RUN mkdir -p /var/www/html && \
 RUN wget https://github.com/drush-ops/drush/releases/download/8.4.8/drush.phar && \
     chmod +x drush.phar && mv drush.phar /usr/local/bin/drush
 
+RUN mkdir -p /var/log/mariadb/ && touch /var/log/mariadb/mariadb.log && chmod a+w /var/log/mariadb/mariadb.log
 RUN echo "error_log = /var/log/php-scripts.log" >> /etc/php.ini
 RUN echo "cd /var/www" >> /root/.bashrc
 COPY etc/httpd/conf/httpd.conf /etc/httpd/conf/httpd.conf
